@@ -21,7 +21,12 @@ const liMaker = (text) => {
   let it = 'youtu.be/'
   if(text.indexOf(it) !== -1){
     text = text.replace(it, cow)
-  } 
+  }
+  let time = /([\?|&]t=[a-z0-9]+)/
+  if(text.indexOf('t=') !== -1){
+    let comb = text.match(time)[0]
+    text = text.replace(comb, '')
+  }
 
   text = text.replace('watch?v=', 'embed/');
   vid.src = text;
